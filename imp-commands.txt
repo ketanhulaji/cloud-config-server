@@ -1,0 +1,20 @@
+C:\kafka\config
+
+zookeeper-server-start.bat C:\kafka\config\zookeeper.properties
+
+kafka-server-start.bat C:\kafka\config\server.properties
+
+kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 -topic restaurant
+
+kafka-topics --list --zookeeper localhost:2181
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic reviews
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic restaurant
+
+kafka-console-producer.bat --bootstrap-server localhost:9092 --topic reviews
+
+
+mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=test
+
+mvn clean install sonar:sonar -Dsonar.login=admin -Dsonar.password=test
